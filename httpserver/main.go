@@ -7,8 +7,6 @@ import (
 	"log"
 	"net/http"
 
-	_ "net/http/pprof"
-
 	"github.com/golang/glog"
 )
 

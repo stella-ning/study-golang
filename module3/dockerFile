@@ -1,4 +1,14 @@
-FROM ubuntu
-LABEL maintainer=ningyuexin
-EXPOSE 80
-ENTRYPOINT ["go run"]
+FROM golang:1.17 AS build
+WORKDIR /module3/
+COPY . .
+ENV CGO_ENABLED=0
+ENV GO111MODULE=on
+ENV GOPROXY=https://goproxy.cn,direct
+RUN GOOS=linux go build -installsuffix cgo -o module3 homework.go
+
+FROM busybox
+COPY --from=build /module3/homework /module3/homework
+EXPOSE 8090
+ENV ENV local
+WORKDIR /httpserver/
+ENTRYPOINT ["./homework"]
