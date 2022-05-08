@@ -10,5 +10,5 @@ FROM busybox
 COPY --from=build /module3/homework /module3/homework
 EXPOSE 8090
 ENV ENV local
-WORKDIR /httpserver/
+WORKDIR /module3/
 ENTRYPOINT ["./homework"]
