@@ -1,0 +1,4 @@
+FROM ubuntu
+LABEL maintainer=ningyuexin
+EXPOSE 80
+ENTRYPOINT /module3
